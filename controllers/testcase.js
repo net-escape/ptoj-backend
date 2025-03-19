@@ -76,7 +76,11 @@ const fetch = async (ctx) => {
   }
 
   const testDir = path.resolve(__dirname, `../data/${pid}`)
-  if (!fse.existsSync(path.resolve(testDir, `${uuid}.${type}`))) {
+  const filePath = path.resolve(testDir, `${uuid}.${type}`)
+  if (!filePath.startsWith(testDir)) {
+    ctx.throw(400, 'Invalid file path')
+  }
+  if (!fse.existsSync(filePath)) {
     ctx.throw(400, 'No such a testcase')
   }
   ctx.type = 'text/plain; charset=utf-8'
