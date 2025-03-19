@@ -76,7 +76,7 @@ const fetch = async (ctx) => {
   }
 
   const testDir = path.resolve(__dirname, `../data/${pid}`)
-  const filePath = path.resolve(testDir, `${uuid}.${type}`)
+  const filePath = path.normalize(path.resolve(testDir, `${uuid}.${type}`))
   if (!filePath.startsWith(testDir)) {
     ctx.throw(400, 'Invalid file path')
   }
