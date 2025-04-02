@@ -55,6 +55,12 @@ const config = {
     Traditional: 1,
     Interaction: 2,
     SpecialJudge: 3,
+
+  permission: {
+    Guest: 0,
+    Student: 1,
+    Teacher: 2,
+    Owner: 3,
   },
 
   deploy: {
